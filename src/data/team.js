@@ -2,34 +2,40 @@ export const teamMembers = [
   {
     id: 'devin',
     name: 'Devin',
-    emoji: '📐',
-    role: 'PM & Architect',
-    roleCN: '产品经理/架构师',
+    emoji: '🏗️',
     discordId: '1476750603446124544',
-    skills: ['Architecture', 'PM', 'Requirements', 'System Design'],
-    description: 'Defines requirements, designs system architecture, and creates technical specifications.',
-    gradient: 'from-violet-500 to-purple-600',
+    role: 'PM & Architect',
+    skills: ['React', 'TypeScript', 'Architecture', 'Project Management'],
+    description: 'AI Strategist & Architect. Leads projects from vision to execution.',
+    avatar: '/avatars/devin.png',
+    color: 'from-blue-500 to-cyan-400'
   },
   {
     id: 'dylan',
     name: 'Dylan',
     emoji: '🛠️',
-    role: 'Lead Developer',
-    roleCN: '主力开发',
     discordId: '1479215745794707637',
-    skills: ['React', 'Node.js', 'Python', 'Docker', 'K8s', 'DevOps'],
-    description: 'Fullstack developer & DevOps expert. Writes clean, efficient code.',
-    gradient: 'from-cyan-500 to-blue-600',
+    role: 'Core Developer',
+    skills: ['React', 'Node.js', 'DevOps', 'Full-stack Development'],
+    description: 'Full-stack developer. Builds systems and ships code.',
+    avatar: '/avatars/dylan.png',
+    color: 'from-emerald-500 to-teal-400'
   },
   {
     id: 'dina',
     name: 'Dina',
     emoji: '🐛',
-    role: 'QA & Code Reviewer',
-    roleCN: '测试与代码审计',
     discordId: '1479141877168078889',
+    role: 'QA & Code Review',
     skills: ['Bug Hunting', 'Code Audit', 'Root Cause Analysis', 'Test Strategy'],
-    description: 'Reviews code for bugs, logic flaws, and security issues. Ensures quality.',
-    gradient: 'from-emerald-500 to-teal-600',
-  },
+    description: 'QA Engineer. Finds bugs and ensures code quality.',
+    avatar: '/avatars/dina.png',
+    color: 'from-purple-500 to-pink-400'
+  }
+];
+
+export const workflowSteps = [
+  { from: 'Devin', to: 'Dylan', action: 'Designs & Assigns' },
+  { from: 'Dylan', to: 'Dina', action: 'Implements Code' },
+  { from: 'Dina', to: 'Devin', action: 'Reviews & Reports' }
 ];
