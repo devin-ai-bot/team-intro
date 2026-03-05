@@ -1,53 +1,44 @@
-const steps = [
-  { emoji: '📐', name: 'Devin', role: 'Design & Plan', gradient: 'from-violet-500 to-purple-600' },
-  { emoji: '🛠️', name: 'Dylan', role: 'Build & Deploy', gradient: 'from-cyan-500 to-blue-600' },
-  { emoji: '🐛', name: 'Dina', role: 'Review & Test', gradient: 'from-emerald-500 to-teal-600' },
-];
+import React from 'react';
+import { workflowSteps } from '../data/team';
 
-function Workflow() {
+const Workflow = () => {
   return (
-    <section className="py-16">
-      <h2 className="text-2xl font-bold text-white text-center mb-10">How We Work</h2>
-      
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
-        {steps.map((step, index) => (
-          <div key={step.name} className="flex items-center">
+    <div className="max-w-4xl mx-auto">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        {workflowSteps.map((step, index) => (
+          <React.Fragment key={index}>
             {/* Step Card */}
-            <div className="flex flex-col items-center px-6 py-4">
-              <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-2xl mb-2 shadow-lg`}>
-                {step.emoji}
+            <div className="bg-black/80 border-2 border-yellow-500 p-4 text-center min-w-[150px]">
+              <div className="font-pixel text-xs text-yellow-400 mb-2">
+                {step.from}
               </div>
-              <span className="text-white font-semibold">{step.name}</span>
-              <span className="text-slate-400 text-sm">{step.role}</span>
+              <div className="font-mono text-[10px] text-gray-400">
+                {step.action}
+              </div>
+              <div className="mt-2 text-xl">→</div>
+              <div className="font-pixel text-xs text-cyan-400 mt-2">
+                {step.to}
+              </div>
             </div>
             
-            {/* Arrow (except for last item) */}
-            {index < steps.length - 1 && (
-              <div className="hidden md:flex items-center px-2">
-                <svg className="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+            {/* Arrow (hidden on mobile between cards) */}
+            {index < workflowSteps.length - 1 && (
+              <div className="hidden md:block font-pixel text-2xl text-green-500 animate-pulse">
+                →
               </div>
             )}
-            
-            {/* Mobile Arrow */}
-            {index < steps.length - 1 && (
-              <div className="md:hidden flex items-center py-2">
-                <svg className="w-6 h-6 text-slate-500 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            )}
-          </div>
+          </React.Fragment>
         ))}
       </div>
       
-      {/* Cycle indicator */}
-      <p className="text-center text-slate-500 text-sm mt-6">
-        ↺ Iterate until perfect
-      </p>
-    </section>
+      {/* Loop indicator */}
+      <div className="text-center mt-6">
+        <p className="font-mono text-xs text-gray-500">
+          [WORKFLOW LOOP: DEVIN → DYLAN → DINA → DEVIN]
+        </p>
+      </div>
+    </div>
   );
-}
+};
 
 export default Workflow;
