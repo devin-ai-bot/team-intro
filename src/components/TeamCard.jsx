@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const TeamCard = ({ member }) => {
+  const [imgError, setImgError] = useState(false);
+  
+  const avatarSrc = imgError ? member.fallbackAvatar : member.avatar;
+
   return (
     <div 
       className="group relative bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 
@@ -13,9 +17,11 @@ const TeamCard = ({ member }) => {
       <div className="flex justify-center mb-4">
         <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${member.color} p-1`}>
           <img 
-            src={member.avatar.replace('.png', '.svg')} 
+            src={avatarSrc}
             alt={`${member.name}'s avatar`}
             className="w-full h-full rounded-full bg-slate-900 object-cover"
+            onError={() => setImgError(true)}
+            crossOrigin="anonymous"
           />
         </div>
       </div>
