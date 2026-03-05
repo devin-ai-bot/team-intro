@@ -1,44 +1,45 @@
-import React from 'react';
-import { workflowSteps } from '../data/team';
+const steps = [
+  { name: 'Devin', role: 'Plan & Architect', emoji: '📐' },
+  { name: 'Dina', role: 'Design & Review', emoji: '🎨' },
+  { name: 'Dylan', role: 'Build & Deploy', emoji: '🛠️' },
+];
 
-const Workflow = () => {
+function Workflow() {
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-        {workflowSteps.map((step, index) => (
-          <React.Fragment key={index}>
-            {/* Step Card */}
-            <div className="bg-black/80 border-2 border-yellow-500 p-4 text-center min-w-[150px]">
-              <div className="font-pixel text-xs text-yellow-400 mb-2">
-                {step.from}
-              </div>
-              <div className="font-mono text-[10px] text-gray-400">
-                {step.action}
-              </div>
-              <div className="mt-2 text-xl">→</div>
-              <div className="font-pixel text-xs text-cyan-400 mt-2">
-                {step.to}
-              </div>
+    <section className="py-20 animate-fade-in">
+      <h2 className="text-sm text-[#666666] text-center mb-12 tracking-wider">WORKFLOW</h2>
+      
+      <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0">
+        {steps.map((step, index) => (
+          <div key={step.name} className="flex items-center">
+            <div className="flex flex-col items-center px-8 py-4">
+              <span className="text-2xl mb-3">{step.emoji}</span>
+              <span className="text-sm text-[#f5f5f0] font-medium">{step.name}</span>
+              <span className="text-xs text-[#666666] mt-1">{step.role}</span>
             </div>
             
-            {/* Arrow (hidden on mobile between cards) */}
-            {index < workflowSteps.length - 1 && (
-              <div className="hidden md:block font-pixel text-2xl text-green-500 animate-pulse">
-                →
+            {index < steps.length - 1 && (
+              <div className="hidden md:flex text-[#3a3a3a]">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5l7 7-7 7" />
+                </svg>
               </div>
             )}
-          </React.Fragment>
+            
+            {index < steps.length - 1 && (
+              <div className="md:hidden text-[#3a3a3a] rotate-90">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            )}
+          </div>
         ))}
       </div>
       
-      {/* Loop indicator */}
-      <div className="text-center mt-6">
-        <p className="font-mono text-xs text-gray-500">
-          [WORKFLOW LOOP: DEVIN → DYLAN → DINA → DEVIN]
-        </p>
-      </div>
-    </div>
+      <p className="text-center text-[#3a3a3a] text-xs mt-12">iterate until perfect</p>
+    </section>
   );
-};
+}
 
 export default Workflow;

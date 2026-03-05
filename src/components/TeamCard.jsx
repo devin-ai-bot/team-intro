@@ -1,80 +1,38 @@
-import React, { useState } from 'react';
-
-const TeamCard = ({ member }) => {
-  const [imgError, setImgError] = useState(false);
-  const avatarSrc = imgError ? member.fallbackAvatar : member.avatar;
-
+function TeamCard({ member, index }) {
   return (
     <div 
-      className="group relative bg-black/80 border-4 border-cyan-500 p-4 pixel-border neon-border
-                 transition-all duration-200 hover:scale-105 glitch"
-      role="article"
-      aria-label={`${member.name} - ${member.role}`}
+      className="animate-fade-in p-8 rounded bg-[#1a1a1a] border border-[#2a2a2a] hover:border-[#3a3a3a] transition-colors duration-300"
+      style={{ animationDelay: `${index * 0.1}s` }}
     >
-      {/* Pixel Avatar Frame */}
-      <div className="flex justify-center mb-4">
-        <div className="relative">
-          {/* Pixel border frame */}
-          <div className="absolute -inset-2 bg-gradient-to-br from-cyan-500 to-purple-600"></div>
-          <div className="relative bg-black p-1">
-            <img 
-              src={avatarSrc}
-              alt={`${member.name}'s avatar`}
-              className="w-24 h-24 object-cover image-pixelated"
-              style={{ imageRendering: 'pixelated' }}
-              onError={() => setImgError(true)}
-            />
-          </div>
-          {/* Corner decorations */}
-          <div className="absolute -top-1 -left-1 w-3 h-3 bg-cyan-400"></div>
-          <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400"></div>
-          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-cyan-400"></div>
-          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-cyan-400"></div>
-        </div>
+      {/* Avatar */}
+      <div className="w-24 h-24 mx-auto mb-6 relative">
+        <img 
+          src={member.avatar}
+          alt={member.name}
+          className="w-full h-full object-cover"
+          style={{ imageRendering: 'pixelated' }}
+        />
+        <div className="absolute inset-0 border-2 border-[#2a2a2a] pointer-events-none" />
       </div>
-
+      
       {/* Name & Role */}
-      <div className="text-center mb-3">
-        <h3 className="font-pixel text-sm text-white mb-2 neon-text">
-          {member.emoji} {member.name.toUpperCase()}
-        </h3>
-        <p className="font-mono text-xs text-green-400 bg-green-900/30 px-2 py-1 inline-block">
-          [{member.role.toUpperCase()}]
-        </p>
-      </div>
-
-      {/* Discord ID */}
-      <div className="text-center mb-3">
-        <code className="font-mono text-[10px] text-gray-500 bg-black border border-gray-700 px-2 py-1 block truncate">
-          ID:{member.discordId}
-        </code>
-      </div>
-
+      <h3 className="text-lg font-medium text-[#f5f5f0] text-center mb-1">{member.name}</h3>
+      <p className="text-sm text-[#a0a0a0] text-center mb-1">{member.role}</p>
+      <p className="text-xs text-[#666666] text-center mb-6">{member.roleCN}</p>
+      
       {/* Description */}
-      <p className="font-mono text-xs text-gray-400 text-center mb-4 leading-relaxed">
-        {member.description}
-      </p>
-
-      {/* Skills - Pixel Tags */}
+      <p className="text-sm text-[#a0a0a0] text-center leading-relaxed mb-6">{member.description}</p>
+      
+      {/* Skills */}
       <div className="flex flex-wrap gap-2 justify-center">
-        {member.skills.map((skill, index) => (
-          <span 
-            key={index}
-            className="font-mono text-[10px] px-2 py-1 bg-purple-900/50 text-purple-300 
-                       border border-purple-500/50"
-          >
-            {skill.toUpperCase()}
+        {member.skills.map((skill) => (
+          <span key={skill} className="px-2 py-1 text-xs text-[#a0a0a0] border border-[#2a2a2a] hover:border-[#d4a5ff] hover:text-[#d4a5ff] transition-colors cursor-default">
+            {skill}
           </span>
         ))}
       </div>
-
-      {/* Status Indicator */}
-      <div className="mt-4 flex items-center justify-center gap-2">
-        <div className="w-2 h-2 bg-green-500 animate-pulse"></div>
-        <span className="font-mono text-[10px] text-green-500">ONLINE</span>
-      </div>
     </div>
   );
-};
+}
 
 export default TeamCard;
