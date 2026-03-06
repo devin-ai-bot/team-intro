@@ -1,3 +1,26 @@
+export const translations = {
+  en: {
+    title: 'AI Team',
+    subtitle: 'Building the future, one commit at a time.',
+    workflow: 'WORKFLOW',
+    footer: 'AI-Powered Development Team',
+    modes: {
+      web: { name: 'Web Development', desc: 'Full-stack web products' },
+      quant: { name: 'Quant Trading', desc: 'Quantitative trading team' }
+    }
+  },
+  zh: {
+    title: 'AI 团队',
+    subtitle: '一次提交，构建未来。',
+    workflow: '工作流程',
+    footer: 'AI 驱动的开发团队',
+    modes: {
+      web: { name: 'Web 开发', desc: '全栈 Web 产品' },
+      quant: { name: '量化交易', desc: '量化交易团队' }
+    }
+  }
+};
+
 export const teamMembers = [
   {
     id: 'devin',
@@ -5,19 +28,17 @@ export const teamMembers = [
     avatar: 'https://cdn.discordapp.com/avatars/1476750603446124544/d62e929a6e09bbb6633d3b4abf8e4afc.webp?size=256',
     roles: {
       web: {
-        title: 'PM & Architect',
-        titleCN: '产品经理/架构师',
+        title: { en: 'PM & Architect', zh: '产品经理/架构师' },
         skills: ['Architecture', 'PM', 'Requirements', 'System Design'],
-        description: 'Defines requirements, designs system architecture, and creates technical specifications.',
+        description: { en: 'Defines requirements, designs system architecture, and creates technical specifications.', zh: '定义需求，设计系统架构，创建技术规范。' }
       },
       quant: {
-        title: 'Quant Researcher',
-        titleCN: '量化研究员',
+        title: { en: 'Quant Researcher', zh: '量化研究员' },
         skills: ['Alpha Signals', 'Statistical Arbitrage', 'Factor Mining', 'ML Models'],
-        description: 'Builds mathematical models, designs trading strategies, and develops backtesting frameworks.',
-        model: 'qwen3-max-2026-01-23',
-      },
-    },
+        description: { en: 'Builds mathematical models, designs trading strategies, and develops backtesting frameworks.', zh: '构建数学模型，设计交易策略，开发回测框架。' },
+        model: 'qwen3-max-2026-01-23'
+      }
+    }
   },
   {
     id: 'dylan',
@@ -25,19 +46,17 @@ export const teamMembers = [
     avatar: 'https://cdn.discordapp.com/avatars/1479215745794707637/07cc81131a6ce8e4d69435f96051d05b.webp?size=256',
     roles: {
       web: {
-        title: 'Core Developer',
-        titleCN: '主力开发',
+        title: { en: 'Core Developer', zh: '主力开发' },
         skills: ['React', 'Node.js', 'Python', 'Docker', 'K8s', 'DevOps'],
-        description: 'Fullstack developer & DevOps expert. Writes clean, efficient code.',
+        description: { en: 'Fullstack developer & DevOps expert. Writes clean, efficient code.', zh: '全栈开发 & DevOps 专家。编写简洁高效的代码。' }
       },
       quant: {
-        title: 'Quant Developer',
-        titleCN: '量化开发/执行专家',
+        title: { en: 'Quant Developer', zh: '量化开发/执行专家' },
         skills: ['C++', 'Rust', 'Python', 'HFT Engine', 'Data Pipeline', 'Exchange API'],
-        description: 'Implements low-latency trading engines and data pipelines.',
-        model: 'qwen3-coder-next',
-      },
-    },
+        description: { en: 'Implements low-latency trading engines and data pipelines.', zh: '实现低延迟交易引擎和数据管道。' },
+        model: 'qwen3-coder-next'
+      }
+    }
   },
   {
     id: 'dina',
@@ -45,23 +64,16 @@ export const teamMembers = [
     avatar: 'https://cdn.discordapp.com/avatars/1479141877168078889/0d81c469e1a53ba2256fa0ddfa0bf250.webp?size=256',
     roles: {
       web: {
-        title: 'UX Designer + QA',
-        titleCN: '用户体验设计 + 测试',
+        title: { en: 'UX Designer + QA', zh: '用户体验设计 + 测试' },
         skills: ['UX Design', 'Code Audit', 'Bug Hunting', 'Test Strategy'],
-        description: 'Designs UI/UX and reviews code for bugs and security issues.',
+        description: { en: 'Designs UI/UX and reviews code for bugs and security issues.', zh: '设计 UI/UX，审查代码中的 bug 和安全问题。' }
       },
       quant: {
-        title: 'Risk Controller & Backtester',
-        titleCN: '风控与回测审计',
+        title: { en: 'Risk Controller & Backtester', zh: '风控与回测审计' },
         skills: ['Backtest Validation', 'Stress Testing', 'Risk Audit', 'Stop-loss Monitoring'],
-        description: 'Validates backtest results, performs stress testing, monitors trading risks.',
-        model: 'glm-5',
-      },
-    },
-  },
+        description: { en: 'Validates backtest results, performs stress testing, monitors trading risks.', zh: '验证回测结果，执行压力测试，监控交易风险。' },
+        model: 'glm-5'
+      }
+    }
+  }
 ];
-
-export const modes = {
-  web: { name: 'Web Development', description: '常规Web产品开发' },
-  quant: { name: 'Quant Trading', description: '量化交易团队' },
-};
